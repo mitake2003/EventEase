@@ -1,0 +1,1 @@
+This is a fullStack Project for Event Management.
