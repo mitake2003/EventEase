@@ -25,7 +25,7 @@ const LoginForm = () => {
         await axios.post("/api/v1/users/login",formData)
         .then(res => {
             const user = res.data.data.user;
-            sessionStorage.setItem("id", user._id);
+            sessionStorage.setItem("userId", user._id);
             toast("Login Successfull");
             navigate("/");
         })

@@ -19,9 +19,9 @@
     align-items: center;
   }
   
-  button {
-    background-color: #ffffff; /* Button background color */
-    color: #4a90e2; /* Button text color */
+  .navbar-content button {
+    background-color: #2978d2; /* Button background color */
+    color: #d7e0ea; /* Button text color */
     border: none;
     padding: 8px 16px;
     border-radius: 4px;
@@ -29,6 +29,7 @@
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
+    margin-right: 5px;
   }
   
   button:hover {
@@ -36,7 +37,7 @@
     color: #333; /* Hover text color */
   }
 
-  .event-button {
+  .btn-display {
     display: none;
   }
   
