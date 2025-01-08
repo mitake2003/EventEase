@@ -1,0 +1,99 @@
+/* General page styling */
+.EventPage {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f5f5f5;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header section */
+  .EventHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .EventButton {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #4a90e2;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .EventButton:hover {
+    background-color: #357ab8;
+  }
+  
+  /* Event details section */
+  .EventDetails {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .EventTitle {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .EventInfo {
+    font-size: 1rem;
+    margin: 8px 0;
+  }
+  
+  .EventDescription {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-top: 20px;
+    color: #555;
+  }
+  
+  /* Attendee list section */
+  .AttendeeList {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .AttendeeList h2 {
+    margin-bottom: 10px;
+  }
+  
+  .AttendeeTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .AttendeeTable th,
+  .AttendeeTable td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .AttendeeTable th {
+    background-color: #4a90e2;
+    color: white;
+  }
+  
+  .AttendeeTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .AttendeeTable tr:hover {
+    background-color: #eef6ff;
+  }
+  
+  
