@@ -2,10 +2,23 @@ import { useEffect, useState } from "react";
 import "./EventDetails.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import handleEventRegister from "../utils/registerEvent";
 
 const EventDetails = () => {
-    const [attendees, setAttendees] = useState([]);
+    const [users, setUsers] = useState([]);
     const [event, setEvents] = useState({});
+
+    const getUsers = async(attendees) => {
+      await axios.get("/api/v1/users/users")
+      .then(res => {
+        const usersList = res.data.data;
+        const filterUsers = usersList.filter((user) => {
+          return attendees.includes(user._id);
+        })
+        setUsers(filterUsers);
+      })
+      .catch(err => console.log(err));
+    }
 
     useEffect(() => {
       const eventId = sessionStorage.getItem("eventId");
@@ -13,12 +26,10 @@ const EventDetails = () => {
         eventId
       }})
       .then(res => {
+        const attendees = res.data.data.Attendee; 
+        getUsers(attendees);
         setEvents(res.data.data);
-        console.log(event.Attendee);
-        // const list = event.Attendee.map((val) => {
-        //   return event[val];
-        // })
-        // setAttendees(list);
+        //console.log(users);
       })
       .catch(err => console.log(err));
     },[])
@@ -26,7 +37,7 @@ const EventDetails = () => {
     return <div className="EventPage">
     <div className="EventHeader">
       <Link to={"/"}><button className="EventButton">Back</button></Link>
-      <button className="EventButton">Register</button>
+      <button className="EventButton" onClick={handleEventRegister}>Register</button>
     </div>
     <div className="EventDetails">
       <h1 className="EventTitle">{event.title}</h1>
@@ -46,7 +57,13 @@ const EventDetails = () => {
           </tr>
         </thead>
         <tbody>
-          
+        {users.map((user, index) => {
+            return <tr key={user._id}>
+              <th>{index + 1}</th>
+              <th>{user.fullName}</th>
+              <th>{user.email}</th>
+            </tr>
+          })}
         </tbody>
       </table>
     </div>

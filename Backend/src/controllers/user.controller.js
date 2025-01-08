@@ -128,4 +128,10 @@ const logoutUser = AsyncHandler(async (req, res) => {
     res.status(200).json(new ApiResponse(200, {}, "User Logged Out"));
 });
 
-export { registerUser, loginUser, logoutUser };
+const getUsers = AsyncHandler(async (req, res) => {
+    const users = await User.find({});
+
+    res.status(200).json(new ApiResponse(200, users, "List of Users"));
+});
+
+export { registerUser, loginUser, logoutUser, getUsers };

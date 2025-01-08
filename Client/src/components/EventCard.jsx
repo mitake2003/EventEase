@@ -3,46 +3,22 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./EventCard.css";
 import { toast } from "react-toastify";
+import handleEventRegister from "../utils/registerEvent.js";
 
 const EventCard = ({ event }) => {
   const [visible, setVisible] = useState(false);
-  //console.log(event.Attendee);
-
-  // const checkExist = () => {
-  //   const userId = sessionStorage.getItem("id");
-  //   const attendees = event.Attendee;
-  //   for (let i=0; i<attendees.length; i++) {
-  //     if (userId === attendees[i]) {
-  //       setVisible(true);
-  //       return;
-  //     }
-  //   }
-  //   setVisible(false);
-  // }
-  const handleRouteChange = () => {
+  const [users, setUsers] = useState();
+  
+  const setEventId = () => {
     sessionStorage.setItem("eventId", event._id);
   }
 
-    const handleEventRegister = async () => {
-      const userId = sessionStorage.getItem("id");
-      if (!userId) {
-        toast("Login to register")
-      }
-      else {
-        await axios.put("/api/v1/events/eventRegister",
-          {
-              eventId: event._id,
-              userId,
-          })
-          .then(res => {
-            console.log(res.data);
-            toast("registered successfully");
-          })
-          .catch(err => console.log(err))
-        };
-      }
+  const registerEvent = () => {
+    setEventId();
+    handleEventRegister();
+  }
 
-    return (
+  return (
         <div className="card">
             <h2 className="title">{event.title}</h2>
             <p className="detail">
@@ -58,12 +34,12 @@ const EventCard = ({ event }) => {
                 <strong>Organizer:</strong> {event.organizer}
             </p>
             <div className="btnContainer">
-                <Link to={'/EventDetails'} onClick={handleRouteChange}>
+                <Link to={'/EventDetails'} onClick={setEventId}>
                     <button className="button">View Details</button>
                 </Link>
                 <button
                     className={`button ${visible?"btnVisible":""}`}
-                    onClick={handleEventRegister}
+                    onClick={registerEvent}
                 >
                     Register
                 </button>

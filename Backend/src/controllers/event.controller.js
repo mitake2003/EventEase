@@ -54,8 +54,15 @@ const eventRegister = AsyncHandler( async(req, res) => {
     user.registered.push(event._id);
     await user.save();
 
-    event.Attendee.push(userId);
-    await event.save();
+    const eventList = event.Attendee;
+    //console.log(eventList);
+    if (!eventList.includes(user._id)) {
+        event.Attendee.push(userId);
+        await event.save();
+    }
+    else {
+        throw new ApiError(401, "Already Registered !");
+    }
 
     res.status(200).json(new ApiResponse(200, {}, "Registered successfully"));
 });
