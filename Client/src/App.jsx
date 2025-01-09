@@ -6,13 +6,14 @@ import LoginForm from "./components/LoginUser";
 import EventDetails from "./pages/EventDetails";
 import Home from "./pages/Home";
 import CreateEvent from "./components/CreateEvent";
-import { useEffect } from "react";
+import Navbar from "./components/NavBar";
 
 function App() {
 
     
     return (
         <>
+        <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/register" element={<RegisterForm />} />

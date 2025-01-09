@@ -36,7 +36,7 @@ const LoginForm = () => {
         <div
             style={{
                 maxWidth: "400px",
-                margin: "auto",
+                margin: "50px auto",
                 padding: "20px",
                 border: "1px solid #ccc",
                 borderRadius: "10px",

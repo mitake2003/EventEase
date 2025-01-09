@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const handleEventRegister = async () => {
-    const userId = sessionStorage.getItem("id");
+    const userId = sessionStorage.getItem("userId");
     const eventId = sessionStorage.getItem("eventId")
     if (!userId) {
       toast("Login to register")

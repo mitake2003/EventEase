@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import EventCard from "../components/EventCard";
 import axios from "axios";
 import "./Home.css";
-import Navbar from "../components/NavBar";
 
 const Home = () => {
     const [events, setEvents] = useState([]);
@@ -32,7 +31,6 @@ const Home = () => {
 
     return (
         <div>
-            <Navbar />
             <div className="search-bar">
                 <input
                     type="text"

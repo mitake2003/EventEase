@@ -40,7 +40,7 @@ const RegisterForm = () => {
         <div
             style={{
                 maxWidth: "400px",
-                margin: "auto",
+                margin: "30px auto",
                 padding: "20px",
                 border: "1px solid #ccc",
                 borderRadius: "10px",

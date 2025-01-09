@@ -1,5 +1,8 @@
 import { useState } from "react";
 import "./CreateEvent.css";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const CreateEvent = () => {
     const [eventData, setEventData] = useState({
@@ -10,6 +13,7 @@ const CreateEvent = () => {
         organizer: "",
         description: "",
     });
+    const navigate = useNavigate();
 
     const changeHandler = (e) => {
         const {name, value} = e.target;
@@ -19,9 +23,14 @@ const CreateEvent = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        console.log(eventData);
+        await axios.post("/api/v1/events/createEvent",eventData)
+        .then(res => {
+            toast("Event Created Succesfully");
+            navigate("/");
+        })
+        .catch(err => console.log(err));
     };
 
     return (

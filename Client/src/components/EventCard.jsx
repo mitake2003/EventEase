@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import "./EventCard.css";
-import { toast } from "react-toastify";
 import handleEventRegister from "../utils/registerEvent.js";
 
 const EventCard = ({ event }) => {
   const [visible, setVisible] = useState(false);
-  const [users, setUsers] = useState();
   
   const setEventId = () => {
     sessionStorage.setItem("eventId", event._id);

@@ -39,16 +39,16 @@ const getEventById = AsyncHandler( async(req, res) => {
 
 const eventRegister = AsyncHandler( async(req, res) => { 
     const { userId, eventId } = req.body;    //req.user._id use when using middleware
-    
+    console.log(userId, eventId);
     const user = await User.findById(userId);
     
     if (!user) {
-        throw new ApiError(500, "Something went wrong");
+        throw new ApiError(500, "Something went wrong user not found");
     }
 
     const event = await Event.findById(eventId);
     if (!event) {
-        throw new ApiError(500, "Something went wrong");
+        throw new ApiError(500, "Something went wrong event not found");
     }
 
     user.registered.push(event._id);
