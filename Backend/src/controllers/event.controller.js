@@ -67,4 +67,27 @@ const eventRegister = AsyncHandler( async(req, res) => {
     res.status(200).json(new ApiResponse(200, {}, "Registered successfully"));
 });
 
-export { eventCreation, getEvents, eventRegister, getEventById };
+const deleteEvent = AsyncHandler(async(req, res) => {
+    const { id } = req.body;
+    const result = await Event.findByIdAndDelete(id);
+    
+    if (!result) {
+        throw new ApiError(500, "Something went wrong event not found");
+    }
+
+    res.status(200).json(new ApiResponse(200, {}, "Event Deleted Successfully"));
+});
+
+const updateEventStatus = AsyncHandler( async(req, res) => {
+    const { id } = req.body;
+
+    const result = await Event.findByIdAndUpdate(id, {status : "approved"});
+    
+    if (!result) {
+        throw new ApiError(500, "Something went wrong event not found");
+    }
+
+    res.status(200).json(new ApiResponse(200, {}, "Event Approved Successfully"));
+});
+
+export { eventCreation, getEvents, eventRegister, getEventById, deleteEvent, updateEventStatus};
